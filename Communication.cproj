@@ -177,6 +177,21 @@
     <Compile Include="timers.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Usart\usart.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Usart\usart.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Usart\usart_Cfg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Usart\usart_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Usart" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

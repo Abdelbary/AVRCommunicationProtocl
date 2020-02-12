@@ -28,6 +28,9 @@ void SPI_init(gstrSPI_spi_satus_t * spi_status){
 		 CLEAR_BIT(SPI_DIR_PORT,SPI_MISO);
 		 
 		 
+		 /*set ss to zero*/
+		 CLEAR_BIT(SPI_DATA_PORT,SPI_SS);
+
 	break;
 	case SPI_SLAVE_MOD:
 	/******** Configure SPI Slave Pins *********

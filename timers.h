@@ -54,6 +54,7 @@
 #define T2_PWM_BIT	BIT2
 				   
 
+
 typedef enum En_timer0Mode_t{
 	T0_NORMAL_MODE=0,T0_COMP_MODE=0x08
 }En_timer0Mode_t;

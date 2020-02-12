@@ -7,6 +7,7 @@
 #include "gpio.h"
 
 #define SPI_DIR_PORT		PORTB_DIR
+#define SPI_DATA_PORT		PORTB_DATA
 #define SPI_SS				4
 #define SPI_MOSI			5
 #define SPI_MISO			6

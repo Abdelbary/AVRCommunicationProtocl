@@ -18,8 +18,8 @@ typedef enum En_buttonId_t{
 }En_buttonId_t;
 
 typedef enum En_buttonStatus_t{
-	Pressed,
-	Released
+	Released ,
+	Pressed 
 }En_buttonStatus_t;
 
 

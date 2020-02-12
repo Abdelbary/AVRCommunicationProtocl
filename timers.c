@@ -5,8 +5,7 @@
  *  Author: mahmo	
  */ 
 #include "timers.h"
-
-
+#include "interrupt.h"
 
 #define TIMER0_PRESCALER_CLEAR_MASK		0x07
 #define TIMER1_PRESCALER_CLEAR_MASK     0x0007
@@ -69,7 +68,7 @@ void timer0Init(En_timer0Mode_t en_mode,En_timer0OC_t en_OC0,
 En_timer0perscaler_t en_prescal, uint8_t u8_initialValue, 
 uint8_t u8_outputCompare, En_timer0Interrupt_t en_interruptMask)
 {
-	
+	sei();
 	/*saving prescaler value*/
 	genu_timer0prescaler	= en_prescal;
 	//genu_timer0Mode			= en_mode;
@@ -509,7 +508,7 @@ void timer2Start(void)
  */
 void timer2Stop(void)
 {
-	CLEAR_MASK(TCCR0,TIMER2_PRESCALER_CLEAR_MASK);
+	CLEAR_MASK(TCCR2,TIMER2_PRESCALER_CLEAR_MASK);
 }
 
 

@@ -5,6 +5,7 @@
  *  Author: mahmo
  */ 
 #include "pushButton.h"
+#include "timers.h"
 void pushButtonInit(En_buttonId_t en_butotn_id)
 {
 	switch(en_butotn_id)
@@ -30,37 +31,35 @@ En_buttonStatus_t pushButtonGetStatus(En_buttonId_t en_butotn_id)
 	switch(en_butotn_id)
 	{
 		case BTN_0:
-		ret = gpioPinRead(BTN_0_GPIO,BTN_0_BIT);
-		if(ret == Pressed)
+		if(gpioPinRead(BTN_0_GPIO,BTN_0_BIT) == Pressed)
 		{
-			softwareDelayMs(50);
+			timer2DelayMs(50);
 			if(gpioPinRead(BTN_0_GPIO,BTN_0_BIT) == Pressed)
 				ret = Pressed;
 		}
 		break;
 		case BTN_1:
-		ret = gpioPinRead(BTN_1_GPIO,BTN_1_BIT);
-		if(ret == Pressed)
+		
+		if(gpioPinRead(BTN_1_GPIO,BTN_1_BIT) == Pressed)
 		{
-			softwareDelayMs(50);
+			timer2DelayMs(50);
 			if(gpioPinRead(BTN_1_GPIO,BTN_1_BIT) == Pressed)
 			ret = Pressed;
 		}
 		break;
 		case BTN_2:
-		ret = gpioPinRead(BTN_2_GPIO,BTN_2_BIT);
-		if(ret == Pressed)
+		if(gpioPinRead(BTN_2_GPIO,BTN_2_BIT) == Pressed)
 		{
-			softwareDelayMs(50);
+			timer2DelayMs(50);
 			if(gpioPinRead(BTN_2_GPIO,BTN_2_BIT) == Pressed)
 			ret = Pressed;
 		}
 		break;
 		case BTN_3:
-		ret = gpioPinRead(BTN_3_GPIO,BTN_3_BIT);
-		if(ret == Pressed)
+		
+		if(gpioPinRead(BTN_3_GPIO,BTN_3_BIT) == Pressed)
 		{
-			softwareDelayMs(50);
+			timer2DelayMs(50);
 			if(gpioPinRead(BTN_3_GPIO,BTN_3_BIT) == Pressed)
 			ret = Pressed;
 		}
