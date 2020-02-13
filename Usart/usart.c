@@ -4,7 +4,7 @@
 /* Create a new Usart instance in the main -Dont forget - */
 //Usart s ={/*put your initial params here and then s will be passed to functions*/};
 extern volatile uint8_t * c;  
-volatile uint8_t u8_udr_empty = 0; // you cannot read 
+volatile uint8_t u8_udr_is_empty = 0; // you cannot read 
 
 /*
 *  Description : Intializes USART.
@@ -80,7 +80,7 @@ uint8_t UsartReadRx(void)
 void UsartWriteTx(uint8_t ch)
 {
    //while (!(UCSRA & (0x20))) ; /* check UDRE is empty through URDE flag */
-   UDR = (uint8_t)ch;
+   UDR = ch;
    
 }
 
@@ -96,8 +96,7 @@ ISR(USART_RXC_vect)
    */   
    //UsartReadRx();
     //*c = UDR;    
-    u8_udr_empty = 0;    
-    UDR = 0x00;       
+    u8_udr_is_empty = FALSE;    
 }
 
 /*
@@ -109,6 +108,5 @@ ISR(USART_UDRE_vect)
    * when data register is empty ..> read the new character 
    */
    //UDR = (*c);
-   UDR = 0x00;
-   u8_udr_empty = 1;          
+   u8_udr_is_empty = TRUE;          
 }

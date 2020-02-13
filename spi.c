@@ -67,9 +67,15 @@ void SPI_sendByte(const uint8_t data)
 	 while((SPSR& (1<<SPIF)) == 0); //wait until SPI interrupt flag=1 (data is sent correctly)
 }
 
-uint8_t SPI_recieveByte(void)
+uint8_t SPI_recieveByte(uint8_t * value)
 {
-   while((SPSR& (1<<SPIF)) == 0);//wait until SPI interrupt flag=1(data is receive correctly)
-   return SPDR; //return the received byte from SPI data register
+	//wait until SPI interrupt flag=1(data is receive correctly)
+   if((SPSR& (1<<SPIF)))
+   {
+	   //return the received byte from SPI data register
+       *value =  SPDR; 
+	   return 0;
+   }
+   return 1;
 }
 

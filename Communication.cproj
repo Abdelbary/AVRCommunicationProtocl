@@ -162,6 +162,12 @@
     <Compile Include="sevensegement.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="softwareDelay.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="softwareDelay.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="spi.c">
       <SubType>compile</SubType>
     </Compile>

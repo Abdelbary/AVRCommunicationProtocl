@@ -59,7 +59,7 @@ En_spi_data_order_t			spi_data_order;
 
 void SPI_init(gstrSPI_spi_satus_t * spi_status);
 void SPI_sendByte(const uint8_t data);
-uint8_t SPI_recieveByte(void);
+uint8_t SPI_recieveByte(uint8_t* value);
 void spi_enable(void);
 
 #endif
