@@ -20,7 +20,8 @@
 volatile int Timer0OverflowCounter = ZERO;
 uint8_t test_c = 0;
 volatile uint8_t * c = &test_c;
-volatile uint8_t u8_udr_is_empty;
+extern volatile uint8_t u8_udr_is_empty;
+
 ISR(TIMER0_OVF_vect){
 	Timer0OverflowCounter++;
 }
@@ -150,7 +151,7 @@ void test()
 	}
 }
 void master(){
-	//Usart_Init();
+	Usart_Init();
 	pushButtonInit(BTN_0);
 	pushButtonInit(BTN_1);
 	Led_Init(LED_0);
@@ -166,12 +167,16 @@ void master(){
 	sp_status.spi_data_order	 = SPI_DATA_ORDER_LSB;
 	SPI_init(&sp_status);
 	spi_enable();
+	Led_Init(LED_0);
 	uint8_t btn0Status;
 	uint8_t btn1Status;
 	uint8_t pushbutton_block = FALSE;
-	//while(u8_udr_is_empty == TRUE);
-	//sint8_t speed = (UsartReadRx()-'0');
-	sint8_t speed = 5;
+	sint8_t speed;
+	sevenSegInit(SEG_0);
+	sevenSegEnable(SEG_0);
+	speed = UsartReadRxPolling() - '0';
+	sevenSegWrite(SEG_0,speed);
+
 	while(1){
 		btn0Status = pushButtonGetStatus(BTN_0);
 		btn1Status = pushButtonGetStatus(BTN_1);
@@ -205,12 +210,7 @@ void master(){
 	}
 }
 int main(){
-
-
-
-
-
-	//master();
-	slave();
+	master();
+	//slave();
 	//test();
 }
